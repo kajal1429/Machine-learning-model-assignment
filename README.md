@@ -42,43 +42,6 @@ Model Evaluation: Use metrics like accuracy, precision, recall, and F1-score to 
 Deployment: Integrate the models into a system that can classify new vehicles based on their performance metrics and issue alerts for vehicles requiring attention.
 
 Conclusion- we can effectively build models to analyze fleet performance , classify vehicles based on performance metrics, and implement predictive maintenance strategies.
-Import libraries and load data
-import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
-from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error, r2_score
-
- load and prepare data
- Assuming data is stored in a CSV file
-data = pd.read_csv('vehicle_data.csv')
-
-# Split data into features (X) and target (y)
-X = data[['RPM', 'AC Motor Controller Current', 'Throttle Command']]
-y = data['Motor Temperature']
-
-# Convert categorical variables to numerical (if necessary)
-# Example: Convert RPM from categorical bins to numerical
-X['RPM'] = X['RPM'].astype('category').cat.codes
-
-# Split data into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
-# Scale features using StandardScaler
-scaler = StandardScaler()
-X_train_scaled = scaler.fit_transform(X_train)
-X_test_scaled = scaler.transform(X_test)
-
-Interpretation and deployment
-# Print model coefficients to understand feature importance
-coefficients = model.coef_
-intercept = model.intercept_
-
-print('Model Coefficients:')
-for feature, coef in zip(X.columns, coefficients):
-    print(f'{feature}: {coef}')
-
-print(f'Intercept: {intercept}')
 
 
 
